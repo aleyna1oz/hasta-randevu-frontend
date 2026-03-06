@@ -1,42 +1,64 @@
-<!-- Navbar -->
-<header class="navbar">
-  <div class="navbar-left">
-    <img src="assets/logo/Logo_Hasta-Randevu.png" alt="Logo" class="logo" />
-    <span class="app-title">Hasta Randevu Sistemi</span>
-  </div>
-  <div class="navbar-right">
-    <button class="btn login" (click)="goToLogin()"><i class="fas fa-sign-in-alt"></i> Giriş Yap</button>
-    <button class="btn register" (click)="goToRegister()"><i class="fas fa-user-plus"></i> Kayıt Ol</button>
-  </div>
-</header>
+<section class="landing">
+  <div class="landing__hero">
+    <div class="landing__badge">Online Randevu Platformu</div>
 
-<!-- Hero -->
-<section class="hero">
-  <h1>Sağlığınız İçin Buradayız</h1>
-  <p>Yapay zeka destekli randevu sistemimizle şikayetlerinizi analiz ediyor, en uygun çözümü sunuyoruz.</p>
+    <h1 class="landing__title">
+      Randevunu planla,<br />
+      işlemlerini hızlıca yönet
+    </h1>
+
+    <p class="landing__text">
+      Poliklinik ve doktor seçimi, uygun saat görüntüleme ve randevu takibi tek ekranda.
+    </p>
+
+    <div class="landing__actions">
+      <a class="btn btn--primary" href="/login">Giriş Yap</a>
+      <a class="btn btn--secondary" href="/register">Kayıt Ol</a>
+    </div>
+
+    <div class="landing__stats">
+      <div class="stat">
+        <div class="stat__value">3 Rol</div>
+        <div class="stat__label">Hasta • Doktor • Admin</div>
+      </div>
+      <div class="stat">
+        <div class="stat__value">Hızlı Akış</div>
+        <div class="stat__label">Randevu oluştur / iptal</div>
+      </div>
+      <div class="stat">
+        <div class="stat__value">Kolay Takip</div>
+        <div class="stat__label">Geçmiş & yaklaşan</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="landing__panel">
+    <div class="panel__title">Hızlı İşlemler</div>
+
+    <div class="panel__grid">
+      <div class="panel__card">
+        <div class="panel__name">Yeni Randevu</div>
+        <div class="panel__desc">Klinik → Doktor → Tarih → Saat</div>
+      </div>
+
+      <div class="panel__card">
+        <div class="panel__name">Randevularım</div>
+        <div class="panel__desc">Aktif / geçmiş randevular</div>
+      </div>
+
+      <div class="panel__card">
+        <div class="panel__name">Profil</div>
+        <div class="panel__desc">Bilgilerimi güncelle</div>
+      </div>
+
+      <div class="panel__card">
+        <div class="panel__name">Nöbetçi Eczane</div>
+        <div class="panel__desc">Konuma göre listeleme</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Özellikler -->
-<section class="features">
-  <div class="feature-card">
-    <i class="fas fa-calendar-check"></i>
-    <h3>Hızlı Randevu</h3>
-    <p>Klinik seç, saatini belirle, kolayca randevu al.</p>
-  </div>
-  <div class="feature-card">
-    <i class="fas fa-clinic-medical"></i>
-    <h3>Nöbetçi Eczane</h3>
-    <p>Konumuna en yakın eczaneleri görüntüle.</p>
-  </div>
-  <div class="feature-card">
-    <i class="fas fa-user-md"></i>
-    <h3>Doktor Seçimi</h3>
-    <p>Uzman doktorlarla güvenli bir randevu oluştur.</p>
-  </div>
-  <div class="feature-card">
-    <i class="fas fa-brain"></i>
-    <h3>Yapay Zeka Asistanı</h3>
-    <p>Şikayetlerine uygun polikliniği sistem öneriyor.</p>
-  </div>
-</section>
-
+<footer class="landing__footer">
+  © Web Randevu Sistemi
+</footer>

@@ -1,212 +1,94 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background-color: #eef5f9;
+.auth{
+  min-height: calc(100vh - 64px);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0,0,0,0.02);
 }
 
-.login-wrapper {
-  display: flex;
-  height: 100vh;
+.auth__card{
   width: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  flex-direction: row;
+  max-width: 460px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 18px;
+  padding: 22px;
 }
 
-/* SOL TARAF */
-.login-left {
-  width: 50%;
-  padding: 40px 60px;
-  background-color: #eef5f9;
+.auth__head{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  gap: 12px;
   align-items: center;
-  position: relative;
+  margin-bottom: 14px;
 }
 
-/* SAĞ TARAF */
-.login-right {
-  width: 50%;
-  height: 100vh;
-  overflow: hidden;
+.auth__logo{
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: #111827;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
 }
 
-.login-right img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  opacity: 0.85;
-  filter: brightness(1.05) saturate(60%);
-}
-
-/* ✅ Logo sabit sol üstte */
-.logo-container {
-  position: absolute;
-  top: 24px;
-  left: 24px;
-  z-index: 10;
-}
-
-.logo {
-  height: 180px;
-  object-fit: contain;
-}
-
-/* ✅ Yazı ortada */
-.logo-text {
-  margin-top: 60px;
-  text-align: center;
-}
-
-.logo-text h1 {
-  font-size: 36px;
-  font-weight: 700;
-  color: #222;
-  margin: 0;
-}
-
-.logo-text p {
+.auth__title{
+  font-weight: 900;
   font-size: 18px;
-  color: #555;
-  margin-top: 8px;
-  font-style: italic;
+  line-height: 1.1;
 }
 
-/* ✅ Giriş formu */
-.login-form {
-  margin-top: 40px;
+.auth__sub{
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.auth__form{
+  display: grid;
+  gap: 12px;
+}
+
+.field span{
+  font-size: 12px;
+  opacity: 0.8;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.field input{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.12);
+  outline: none;
+}
+
+.btn{
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 0;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.btn--primary{
+  background: #111827;
+  color: #fff;
+}
+
+.auth__links{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-top: 4px;
 }
 
-.input-group {
-  position: relative;
-}
-
-.input-group input {
-  width: 550px;
-  height: 32px;
-  padding: 0 40px 0 40px;
-  font-size: 15px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-.input-icon {
-  position: absolute;
-  top: 50%;
-  left: 12px;
-  transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
-}
-
-.toggle-icon {
-  position: absolute;
-  top: 50%;
-  right: 30px;
-  transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-}
-
-/* ✅ Butonlar */
-.login-btn,
-.register-btn {
-  width: 550px;
-  height: 32px;
-  font-size: 15px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-}
-
-.login-btn {
-  background-color: #007bff;
-  color: white;
-}
-
-.register-btn {
-  background-color: #28a745;
-  color: white;
-}
-
-/* ✅ Yardım metni */
-.help-text {
-  font-size: 14px;
-  color: #444;
-  margin-top: 24px;
-  text-align: center;
-}
-
-.help-text a {
-  color: #007bff;
+.auth__links a{
   text-decoration: none;
-}
-.reset-line {
-  width: 550px;
-  text-align: right;
-  margin-top: 6px;
+  color: #111827;
 }
 
-.forgot-password {
-  color: #00bfff;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
+.muted{
+  opacity: 0.7;
 }
-
-.forgot-password:hover {
-  text-decoration: underline;
-}
-
-/* ✅ Mobil responsive */
-@media (max-width: 768px) {
-  .login-wrapper {
-    flex-direction: column;
-  }
-
-  .login-left {
-    width: 100%;
-    height: auto;
-  }
-
-  .login-right {
-    display: none; 
-  }
-
-  .input-group input,
-  .login-btn,
-  .register-btn {
-    width: 90%;
-  }
-
-  .logo {
-    height: 100px;
-  }
-
-  .logo-container {
-    top: 16px;
-    left: 16px;
-  }
-
-  .logo-text h1 {
-    font-size: 28px;
-  }
-
-  .logo-text p {
-    font-size: 14px;
-  }
-
-  .login-form {
-    margin-top: 20px;
-  }
-}
-

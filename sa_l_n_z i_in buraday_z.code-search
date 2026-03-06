@@ -1,0 +1,7 @@
+# Query: sağlığınız için buradayız
+# ContextLines: 1
+
+1 sonuç - 1 dosya
+
+src/app/components/header/header.component.html:
+  <div class="tagline"><i class="fa-solid fa-heart-pulse"></i> Randevu işlemleri için güvenli platform</div>

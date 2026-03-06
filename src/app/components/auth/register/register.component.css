@@ -1,246 +1,98 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background-color: #eef5f9;
+.auth{
+  min-height: calc(100vh - 64px);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0,0,0,0.02);
 }
 
-.register-wrapper {
-  display: flex;
-  min-height: 100vh;
+.auth__card{
   width: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  flex-direction: row;
-  overflow: hidden;
+  max-width: 520px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 18px;
+  padding: 22px;
 }
 
-/* SOL ALAN */
-.register-left {
-  width: 50%;
-  padding: 40px 60px;
-  background-color: #eef5f9;
+.auth__head{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  gap: 12px;
   align-items: center;
-  position: relative;
+  margin-bottom: 14px;
 }
 
-/* SAĞ GÖRSEL */
-.register-right {
-  width: 50%;
-  height: 100vh;
-  overflow: hidden;
+.auth__logo{
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: #111827;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
 }
 
-.register-right img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.auth__title{
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 1.1;
+}
+
+.auth__sub{
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.auth__form{
+  display: grid;
+  gap: 12px;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.field span{
+  font-size: 12px;
+  opacity: 0.8;
   display: block;
-  opacity: 0.85;
-  filter: brightness(1.05) saturate(60%);
-}
-
-/* LOGO TAM SOL ÜSTTE */
-.logo-container {
-  position: absolute;
-  top: 24px;
-  left: 24px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  z-index: 10;
-}
-
-.logo {
-  height: 180px;
-  object-fit: contain;
-}
-
-/* KAYIT FORMU */
-.register-container {
-  margin-top: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.register-container h2 {
-  font-size: 28px;
   margin-bottom: 6px;
-  color: #222;
 }
 
-.form-subtitle {
-  font-size: 14px;
-  color: #777;
-  margin-bottom: 20px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  align-items: center;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  font-size: 14px;
-  color: #333;
-  font-weight: 500;
-  margin-bottom: 4px;
-}
-
-.form-group input,
-.form-group select {
-  width: 550px;
-  height: 32px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  padding: 0 12px;
-  border-radius: 6px;
-  box-sizing: border-box;
-}
-
-.required {
-  color: red;
-  margin-right: 4px;
-  font-weight: bold;
-}
-
-/* CHECKBOX */
-.checkbox-group {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  color: #333;
-  width: 550px;
-}
-
-.checkbox-group input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
-  margin: 0;
-}
-
-.checkbox-group a {
-  color: #007bff;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-/* HATA */
-.error-text {
-  font-size: 13px;
-  color: red;
-  margin-top: -8px;
-}
-
-/* BUTON */
-button[type="submit"] {
-  width: 550px;
-  height: 32px;
-  background-color: #28a745;
-  color: white;
-  font-size: 15px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 8px;
-}
-
-/* MODAL */
-.privacy-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
+.field input{
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.12);
+  outline: none;
 }
 
-.modal-content {
-  background: white;
-  padding: 30px;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 600px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.modal-content h3 {
-  margin-top: 0;
-  font-size: 20px;
-  margin-bottom: 12px;
-}
-
-.modal-content p {
-  font-size: 14px;
-  color: #444;
-  line-height: 1.5;
-  max-height: 400px;
-  overflow-y: auto;
-}
-
-.modal-content button {
-  margin-top: 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
+.btn{
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 0;
+  font-weight: 900;
   cursor: pointer;
 }
 
-/* ✅ RESPONSIVE MOBİL DESTEK */
-@media (max-width: 768px) {
-  .register-wrapper {
-    flex-direction: column;
-  }
+.btn--primary{
+  background: #111827;
+  color: #fff;
+}
 
-  .register-left {
-    width: 100%;
-    height: auto;
-  }
+.auth__links{
+  font-size: 12px;
+  margin-top: 4px;
+}
 
-  .register-right {
-    display: none; /* ✅ Görseli gizle */
-  }
+.auth__links a{
+  text-decoration: none;
+  color: #111827;
+}
 
-  .form-group input,
-  .form-group select,
-  button[type="submit"],
-  .checkbox-group {
-    width: 90%;
-  }
-
-  .checkbox-group {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .logo {
-    height: 100px;
-  }
-
-  .logo-container {
-    top: 16px;
-    left: 16px;
-  }
-
-  .register-container {
-    margin-top: 40px;
-  }
+@media (max-width: 700px){
+  .grid{ grid-template-columns: 1fr; }
 }

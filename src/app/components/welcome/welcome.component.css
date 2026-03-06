@@ -1,199 +1,136 @@
-/* === Genel Ayarlar === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.landing{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 42px 18px 24px 18px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 22px;
 }
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f5f7fa;
-  color: #1f2937;
+.landing__hero{
+  padding: 26px;
+  border-radius: 18px;
+  background: rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.08);
 }
 
-/* === Navbar === */
-.navbar {
-  background-color: #e6f0f8;
-  height: 72px; /* Sabit yükseklik */
+.landing__badge{
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.06);
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+
+.landing__title{
+  margin: 0 0 10px 0;
+  font-size: 42px;
+  line-height: 1.12;
+  letter-spacing: -0.5px;
+}
+
+.landing__text{
+  margin: 0 0 16px 0;
+  font-size: 15px;
+  opacity: 0.85;
+  max-width: 520px;
+}
+
+.landing__actions{
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
+  margin: 14px 0 18px 0;
+}
+
+.btn{
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
   align-items: center;
-  padding: 0 24px; /* Üst-alt padding kaldırıldı */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  justify-content: center;
 }
 
-.logo {
-  height: 100px;
-  object-fit: contain;
-  margin-top: 24px;
+.btn--primary{
+  background: #111827;
+  color: #fff;
 }
 
-
-.app-title {
-  font-size: 20px;
-  font-weight: bold;
-  color: #013d6b;
+.btn--secondary{
+  border: 1px solid rgba(17,24,39,0.25);
+  color: #111827;
+  background: #fff;
 }
 
-.navbar-left {
-  display: flex;
-  align-items: center;
+.landing__stats{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.stat{
+  padding: 12px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.stat__value{
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+
+.stat__label{
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.landing__panel{
+  padding: 26px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.panel__title{
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.panel__grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
 
-.btn {
-  padding: 8px 18px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 6px;
-  cursor: pointer;
-  border: none;
-  transition: all 0.3s ease;
+.panel__card{
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.08);
 }
 
-.btn.login {
-  background-color: #007bff;
-  color: white;
-}
-.btn.login:hover {
-  background-color: #0056b3;
+.panel__name{
+  font-weight: 900;
+  margin-bottom: 6px;
 }
 
-.btn.register {
-  background-color: #f3f4f6;
-  color: #007bff;
-  border: 1px solid #007bff;
-}
-.btn.register:hover {
-  background-color: #e0e7ff;
+.panel__desc{
+  font-size: 12px;
+  opacity: 0.85;
 }
 
-/* === Hero Bölümü === */
-.hero {
-  text-align: center;
-  padding: 60px 24px 40px;
-  background-color: #ffffff;
-}
-
-.hero h1 {
-  font-size: 32px;
-  color: #013d6b;
-  margin-bottom: 18px;
-}
-
-.hero p {
-  font-size: 18px;
-  color: #444;
-  max-width: 700px;
+.landing__footer{
+  max-width: 1100px;
   margin: 0 auto;
-  line-height: 1.6;
+  padding: 14px 18px 28px 18px;
+  font-size: 12px;
+  opacity: 0.7;
 }
 
-/* === Özellik Kartları === */
-.features {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  padding: 50px 20px;
-  background-color: #f0f4f8;
-}
-
-.feature-card {
-  background-color: #fff;
-  width: 220px;
-  padding: 24px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-}
-
-.feature-card i {
-  font-size: 32px;
-  color: #007bff;
-  margin-bottom: 16px;
-}
-
-.feature-card h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #013d6b;
-}
-
-.feature-card p {
-  font-size: 14px;
-  color: #555;
-}
-
-/* === Footer === */
-.footer {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 24px 32px;
-  background-color: #1f2937;
-  color: white;
-  align-items: center;
-}
-
-.footer-left ul {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.footer-left ul li a {
-  color: #d1d5db;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.footer-left ul li a:hover {
-  text-decoration: underline;
-}
-
-.footer-right {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-}
-
-.footer-right i {
-  color: #10b981;
-}
-
-/* === Responsive Tasarım === */
-@media screen and (max-width: 768px) {
-  .features {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .navbar-right {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-  }
+@media (max-width: 900px){
+  .landing{ grid-template-columns: 1fr; }
+  .landing__title{ font-size: 34px; }
 }

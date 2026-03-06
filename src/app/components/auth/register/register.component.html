@@ -1,89 +1,48 @@
-<div class="register-wrapper">
-  <!-- Sol alan -->
-  <div class="register-left">
-    <div class="logo-container">
-      <img src="assets/logo/Logo_Hasta-Randevu.png" alt="Logo" class="logo" />
+<section class="auth">
+  <div class="auth__card">
+    <div class="auth__head">
+      <div class="auth__logo">R</div>
+      <div>
+        <div class="auth__title">Kayıt Ol</div>
+        <div class="auth__sub">Yeni hesap oluştur</div>
+      </div>
     </div>
 
-    <div class="register-container">
-      <h2>Üye Ol</h2>
-      <p class="form-subtitle">Tüm alanların doldurulması zorunludur.</p>
+    <form class="auth__form">
+      <div class="grid">
+        <label class="field">
+          <span>Ad</span>
+          <input type="text" placeholder="Ad">
+        </label>
 
-      <form (ngSubmit)="onSubmit()">
-        <!-- Ad -->
-        <div class="form-group">
-          <label for="name"><span class="required">*</span> Ad :</label>
-          <input placeholder="Ad" id="name" name="name" [(ngModel)]="name" />
-        </div>
+        <label class="field">
+          <span>Soyad</span>
+          <input type="text" placeholder="Soyad">
+        </label>
+      </div>
 
-        <!-- Soyad -->
-        <div class="form-group">
-          <label for="surname"><span class="required">*</span> Soyad :</label>
-          <input placeholder="Soyad" id="surname" name="surname" [(ngModel)]="surname" />
-        </div>
+      <label class="field">
+        <span>E-posta</span>
+        <input type="email" placeholder="ornek@mail.com">
+      </label>
 
-        <!-- E-posta -->
-        <div class="form-group">
-          <label for="email"><span class="required">*</span> E-posta :</label>
-          <input type="email" placeholder="E-posta" id="email" name="email" [(ngModel)]="email" />
-        </div>
+      <div class="grid">
+        <label class="field">
+          <span>Parola</span>
+          <input type="password" placeholder="••••••••">
+        </label>
 
-        <!-- Şifre -->
-        <div class="form-group">
-          <label for="password"><span class="required">*</span> Şifre :</label>
-          <input type="password" placeholder="Şifre" id="password" name="password" [(ngModel)]="password" />
-        </div>
+        <label class="field">
+          <span>Parola (Tekrar)</span>
+          <input type="password" placeholder="••••••••">
+        </label>
+      </div>
 
-        <!-- Telefon -->
-        <div class="form-group">
-          <label for="phoneNumber"><span class="required">*</span> Telefon :</label>
-          <input placeholder="Telefon" id="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber" />
-        </div>
+      <button class="btn btn--primary" type="button">Hesap Oluştur</button>
 
-        <!-- Cinsiyet -->
-        <div class="form-group">
-          <label for="gender"><span class="required">*</span> Cinsiyet :</label>
-          <select id="gender" name="gender" [(ngModel)]="gender">
-            <option value="BELIRTILMEMIS">Cinsiyet</option>
-            <option value="ERKEK">Erkek</option>
-            <option value="KADIN">Kadın</option>
-          </select>
-        </div>
-
-        <!-- Doğum Tarihi -->
-        <div class="form-group">
-          <label for="birthDate"><span class="required">*</span> Doğum Tarihi :</label>
-          <input type="date" id="birthDate" name="birthDate" [(ngModel)]="birthDate" [max]="today" />
-        </div>
-
-        <!-- Gizlilik kutusu -->
-        <div class="form-group checkbox-group">
-          <input type="checkbox" id="privacyPolicy" [(ngModel)]="privacyAccepted" name="privacyPolicy" />
-          <label for="privacyPolicy">
-            <a href="#" (click)="openPrivacyPolicy($event)">Üyelik ve Gizlilik Politikası</a> Okudum, kabul ediyorum.
-          </label>
-        </div>
-
-        <!-- Buton -->
-        <button type="submit">Kayıt Ol</button>
-      </form>
-    </div>
+      <div class="auth__links">
+        <a routerLink="/login">Zaten hesabın var mı? Giriş Yap</a>
+      </div>
+    </form>
   </div>
-
-  <!-- Sağ alan -->
-  <div class="register-right">
-    <img src="assets/auth/auth.jpg" alt="Görsel" />
-  </div>
-
-  <!-- Gizlilik Modalı -->
-  <div class="privacy-modal" *ngIf="showPrivacy">
-    <div class="modal-content">
-      <h3>Gizlilik Politikası</h3>
-      <p>
-        <strong>Merkezi Hekim Randevu Sistemi (MHRS)</strong>'ne hoş geldiniz...
-        [Metin burada]
-      </p>
-      <button (click)="closePrivacyPolicy()">Okudum Onaylıyorum</button>
-    </div>
-  </div>
-</div>
+</section>

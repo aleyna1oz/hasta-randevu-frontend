@@ -1,60 +1,30 @@
-<div class="login-wrapper">
-  <!-- Sol taraf -->
-  <div class="login-left">
-    <div class="logo-container">
-      <img src="assets/logo/Logo_Hasta-Randevu.png" alt="Logo" class="logo" />
+<section class="auth">
+  <div class="auth__card">
+    <div class="auth__head">
+      <div class="auth__logo">R</div>
+      <div>
+        <div class="auth__title">Giriş</div>
+        <div class="auth__sub">Hesabına erişmek için bilgilerini gir</div>
+      </div>
     </div>
 
-    <div class="logo-text">
-      <h1>Hasta Randevu Sistemi</h1>
-      <p>AI destekli hızlı ve kolay randevu sistemi</p>
-    </div>
+    <form class="auth__form">
+      <label class="field">
+        <span>E-posta</span>
+        <input type="email" placeholder="ornek@mail.com">
+      </label>
 
-    <form (ngSubmit)="onSubmit()" class="login-form">
-      <div class="input-group">
-        <img src="assets/icons/user.png" class="input-icon" />
-        <input
-          type="text"
-          placeholder="Email"
-          name="email"
-          [(ngModel)]="email"
-        />
-      </div>
+      <label class="field">
+        <span>Parola</span>
+        <input type="password" placeholder="••••••••">
+      </label>
 
-      <div class="input-group">
-        <img src="assets/icons/key.png" class="input-icon" />
-        <input
-          [type]="showPassword ? 'text' : 'password'"
-          placeholder="Parola"
-          name="password"
-          [(ngModel)]="password"
-        />
-        <img
-          src="assets/icons/{{ showPassword ? 'show' : 'hide' }}.png"
-          class="toggle-icon"
-          (click)="togglePassword()"
-        />
-      </div>
+      <button class="btn btn--primary" type="button">Giriş Yap</button>
 
-      <button type="submit" class="login-btn">
-        Giriş Yap
-      </button>
-      <button type="button" class="register-btn" (click)="goToRegister()">Üye Ol</button>
-
-      <!-- ✅ Şifremi unuttum bağlantısı -->
-      <div class="reset-line">
-        <a class="forgot-password" (click)="goToResetPassword()">Şifremi Unuttum</a>
+      <div class="auth__links">
+        <a routerLink="/register">Hesabın yok mu? Kayıt Ol</a>
+        <a href="#" class="muted">Şifremi unuttum</a>
       </div>
     </form>
-
-    <p class="help-text">
-      Soru ve sorunlarınız için
-      <a href="mailto:mhrsyardim@saglik.gov.tr">mhrsyardimsaglik.gov.tr</a> adresimizi kullanarak bize ulaşabilirsiniz.
-    </p>
   </div>
-
-  <!-- Sağ taraf -->
-  <div class="login-right">
-    <img src="assets/auth/auth.jpg" alt="Görsel" />
-  </div>
-</div>
+</section>

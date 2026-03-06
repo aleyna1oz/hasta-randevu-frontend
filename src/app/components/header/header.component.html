@@ -1,38 +1,18 @@
-<div class="top-bar">
-  <!-- Sol taraf: Logo + sistem adı -->
-  <div class="logo-section" (click)="navigateHome()" style="cursor: pointer;">
-    <img src="assets/logo/Logo_Hasta-Randevu.png" alt="Logo" class="header-logo" />
-    <span class="system-name">Hasta Randevu Sistemi</span>
-  </div>
-
-  <!-- Orta kısım: Slogan + Saat -->
-  <div class="center-content">
-    <div class="tagline"><i class="fa-solid fa-heart-pulse"></i> "Sağlığınız için buradayız!"</div>
-    <div class="live-clock"><i class="fa-regular fa-clock"></i> {{ currentTime }}</div>
-  </div>
-
-  <!-- Sağ taraf: kullanıcı adı dropdown -->
-  <div class="user-menu">
-    <button class="user-button" (click)="toggleMenu()" #toggleButtonRef>
-      <i class="fa-solid fa-user"></i>
-      <span class="name-text">{{ currentUser?.name }} {{ currentUser?.surname }}</span>
-      <i class="fa-solid fa-chevron-down"></i>
-    </button>
-
-    <div *ngIf="showMenu" class="dropdown-menu" #dropdownMenuRef>
-      <div class="dropdown-section">
-        <strong><i class="fa-solid fa-id-card"></i> Hesap Bilgileri</strong>
-        <button (click)="goToProfile('identity')"><i class="fa-solid fa-user-pen"></i> Profil Bilgileri</button>
-        <button (click)="goToProfile('contact')"><i class="fa-solid fa-phone"></i> İletişim Bilgileri</button>
-        <button (click)="goToProfile('password')"><i class="fa-solid fa-lock"></i> Parola İşlemleri</button>
-      </div>
-      <hr />
-      <div class="dropdown-section">
-        <strong><i class="fa-solid fa-calendar-check"></i> Randevu Bilgileri</strong>
-        <button (click)="goToAppointmentsByRole()"><i class="fa-solid fa-calendar-days"></i> Randevularım</button>
-      </div>
-      <hr />
-      <button (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i> Çıkış Yap</button>
+<header class="topbar">
+  <a class="topbar__brand" href="/welcome">
+    <div class="brand__logo">R</div>
+    <div class="brand__text">
+      <div class="brand__title">Web Randevu</div>
+      <div class="brand__sub">Hasta • Doktor • Yönetici</div>
     </div>
+  </a>
+
+  <div class="topbar__right">
+    <div class="tagline">
+      <i class="fa-regular fa-clock"></i> {{ currentTime }}
+    </div>
+
+    <a class="btn btn--ghost" href="/register">Kayıt Ol</a>
+    <a class="btn btn--solid" href="/login">Giriş Yap</a>
   </div>
-</div>
+</header>
