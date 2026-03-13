@@ -1,146 +1,161 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<app-ai-chat></app-ai-chat>
-
-<div class="dashboard-wrapper">
-
-  <!-- ÜST BÖLÜM -->
-  <div class="dashboard-top">
-    <div class="dashboard-grid">
-
-      <!-- SOL: Kartlar -->
-      <div class="left-column">
-        <div class="card randevu-card" (click)="goTo('appointment-create')">
-          <div class="icon"><i class="fas fa-user-md"></i></div>
-          <div class="text-content">
-            <div class="title">Randevu Al</div>
-            <div class="subtitle">Yeni bir randevu oluşturmak için bu kartı tıklayın.</div>
-          </div>
-        </div>
-
-        <div class="card eczane-card" (click)="goTo('pharmacy-search')">
-          <div class="icon"><i class="fas fa-pills"></i></div>
-          <div class="text-content">
-            <div class="title">Nöbetçi Eczane</div>
-            <div class="subtitle">Bulunduğunuz il/ilçedeki nöbetçi eczaneleri görmek için tıklayın.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SAĞ: Sekmeler ve Randevu Listesi -->
-      <div class="right-column">
-        <div class="tabs">
-          <button [class.active]="activeTab === 'aktif'" (click)="activeTab = 'aktif'">
-            <i class="fas fa-calendar-check"></i> Aktif Randevular
-          </button>
-          <button [class.active]="activeTab === 'gecmis'" (click)="activeTab = 'gecmis'">
-            <i class="fas fa-history"></i> Geçmiş Randevular
-          </button>
-        </div>
-
-        <div class="tab-content">
-          <!-- Aktif Randevular -->
-          <div *ngIf="activeTab === 'aktif'">
-            <ul class="appointment-list fixed-slots">
-              <ng-container *ngFor="let i of [0, 1]">
-                <li class="appointment-item" [class.placeholder]="!activeAppointments[i]">
-                  <ng-container *ngIf="activeAppointments[i]; else emptyCardActive">
-                    <div class="left">
-                      <div class="date">{{ activeAppointments[i].date }} - {{ activeAppointments[i].time }}</div>
-                      <div class="badge badge-green">Aktif Randevu</div>
-                      <div class="hospital">{{ activeAppointments[i].hospital }}</div>
-                      <div class="desc">{{ activeAppointments[i].description }}</div>
-                    </div>
-                    <div class="right">
-                      <div class="doctor"><i class="fas fa-user-md"></i> {{ activeAppointments[i].doctor?.name }} {{
-                        activeAppointments[i].doctor?.surname }}</div>
-                      <div class="clinic"><i class="fas fa-hospital"></i> {{ activeAppointments[i].clinic?.name }}</div>
-                      <button class="cancel-btn" (click)="cancelAppointment(activeAppointments[i].id)">İptal Et</button>
-                    </div>
-                  </ng-container>
-                  <ng-template #emptyCardActive>
-                    <div class="empty-slot">Boş</div>
-                  </ng-template>
-                </li>
-              </ng-container>
-            </ul>
-            <div class="show-all-container full-width">
-              <button class="show-all-btn" (click)="goToActiveRandevular()">
-                <i class="fas fa-list-ul"></i>
-                Tümünü Göster
-              </button>
-            </div>
-          </div>
-
-          <!-- Geçmiş Randevular -->
-          <div *ngIf="activeTab === 'gecmis'">
-            <ul class="appointment-list fixed-slots">
-              <ng-container *ngFor="let i of [0, 1]">
-                <li class="appointment-item" [class.placeholder]="!pastAppointments[i]">
-                  <ng-container *ngIf="pastAppointments[i]; else emptyCardPast">
-                    <div class="left">
-                      <div class="date">{{ pastAppointments[i].date }} - {{ pastAppointments[i].time }}</div>
-                      <div class="badge badge-red">İptal Randevu</div>
-                      <div class="hospital">{{ pastAppointments[i].hospital }}</div>
-                      <div class="desc">{{ pastAppointments[i].description }}</div>
-                    </div>
-                    <div class="right">
-                      <div class="doctor"><i class="fas fa-user-md"></i> {{ pastAppointments[i].doctor?.name }} {{
-                        pastAppointments[i].doctor?.surname }}</div>
-                      <div class="clinic"><i class="fas fa-hospital"></i> {{ pastAppointments[i].clinic?.name }}</div>
-                      <button class="again-btn" (click)="goToAppointmentCreateByName(pastAppointments[i].clinic?.name)">
-                        Tekrar Al
-                      </button>
-
-                    </div>
-                  </ng-container>
-                  <ng-template #emptyCardPast>
-                    <div class="empty-slot">Boş</div>
-                  </ng-template>
-                </li>
-              </ng-container>
-            </ul>
-            <div class="show-all-container full-width">
-              <button class="show-all-btn" (click)="goToGecmisRandevular()">
-                <i class="fas fa-list-ul"></i>
-                Tümünü Göster
-              </button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div> <!-- .dashboard-grid END -->
-  </div> <!-- .dashboard-top END -->
-
-  <!-- ALT KISIM: NAV KARTLAR -->
-  <div class="dashboard-bottom">
-    <div class="card-grid">
-      <div class="nav-card" (click)="goTo('prescriptions')">
-        <i class="fas fa-prescription-bottle-alt"></i>
-        <span>Reçetelerim</span>
-      </div>
-      <div class="nav-card" (click)="goTo('test-results')">
-        <i class="fas fa-vials"></i>
-        <span>Test Sonuçlarım</span>
-      </div>
-      <div class="nav-card" (click)="goTo('patient-reports')">
-        <i class="fas fa-file-medical-alt"></i>
-        <span>Raporlarım</span>
-      </div>
-      <div class="nav-card" (click)="goTo('patient-history')">
-        <i class="fas fa-notes-medical"></i>
-        <span>Sağlık Geçmişim</span>
-      </div>
-      <div class="nav-card" (click)="goTo('complaints')">
-        <i class="fas fa-comment-dots"></i>
-        <span>Şikayet Oluştur</span>
-      </div>
-      <div class="nav-card" (click)="goTo('appointment-list')">
-        <i class="fas fa-calendar-alt"></i>
-        <span>Tüm Randevularım</span>
-      </div>
+<section class="ux-page">
+  <div class="ux-page__header">
+    <div>
+      <h1 class="ux-title">Hasta Paneli</h1>
+      <p class="ux-sub">Randevularınızı yönetin ve hızlı işlemlere erişin.</p>
     </div>
   </div>
 
+  <div class="ux-card">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <app-ai-chat></app-ai-chat>
+
+    <div class="dashboard-wrapper">
+
+      <!-- ÜST BÖLÜM -->
+      <div class="dashboard-top">
+        <div class="dashboard-grid">
+
+          <!-- SOL: Kartlar -->
+          <div class="left-column">
+            <div class="card randevu-card" (click)="goTo('appointment-create')">
+              <div class="icon"><i class="fas fa-user-md"></i></div>
+              <div class="text-content">
+                <div class="title">Randevu Al</div>
+                <div class="subtitle">Yeni bir randevu oluşturmak için bu kartı tıklayın.</div>
+              </div>
+            </div>
+
+            <div class="card eczane-card" (click)="goTo('pharmacy-search')">
+              <div class="icon"><i class="fas fa-pills"></i></div>
+              <div class="text-content">
+                <div class="title">Nöbetçi Eczane</div>
+                <div class="subtitle">Bulunduğunuz il/ilçedeki nöbetçi eczaneleri görmek için tıklayın.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SAĞ: Sekmeler ve Randevu Listesi -->
+          <div class="right-column">
+            <div class="tabs">
+              <button [class.active]="activeTab === 'aktif'" (click)="activeTab = 'aktif'">
+                <i class="fas fa-calendar-check"></i> Aktif Randevular
+              </button>
+              <button [class.active]="activeTab === 'gecmis'" (click)="activeTab = 'gecmis'">
+                <i class="fas fa-history"></i> Geçmiş Randevular
+              </button>
+            </div>
+
+            <div class="tab-content">
+              <!-- Aktif Randevular -->
+              <div *ngIf="activeTab === 'aktif'">
+                <ul class="appointment-list fixed-slots">
+                  <ng-container *ngFor="let i of [0, 1]">
+                    <li class="appointment-item" [class.placeholder]="!activeAppointments[i]">
+                      <ng-container *ngIf="activeAppointments[i]; else emptyCardActive">
+                        <div class="left">
+                          <div class="date">{{ activeAppointments[i].date }} - {{ activeAppointments[i].time }}</div>
+                          <div class="badge badge-green">Aktif Randevu</div>
+                          <div class="hospital">{{ activeAppointments[i].hospital }}</div>
+                          <div class="desc">{{ activeAppointments[i].description }}</div>
+                        </div>
+                        <div class="right">
+                          <div class="doctor"><i class="fas fa-user-md"></i> {{ activeAppointments[i].doctor?.name }} {{
+                            activeAppointments[i].doctor?.surname }}</div>
+                          <div class="clinic"><i class="fas fa-hospital"></i> {{ activeAppointments[i].clinic?.name }}
+                          </div>
+                          <button class="cancel-btn" (click)="cancelAppointment(activeAppointments[i].id)">İptal
+                            Et</button>
+                        </div>
+                      </ng-container>
+                      <ng-template #emptyCardActive>
+                        <div class="empty-slot">Boş</div>
+                      </ng-template>
+                    </li>
+                  </ng-container>
+                </ul>
+                <div class="show-all-container full-width">
+                  <button class="show-all-btn" (click)="goToActiveRandevular()">
+                    <i class="fas fa-list-ul"></i>
+                    Tümünü Göster
+                  </button>
+                </div>
+              </div>
+
+              <!-- Geçmiş Randevular -->
+              <div *ngIf="activeTab === 'gecmis'">
+                <ul class="appointment-list fixed-slots">
+                  <ng-container *ngFor="let i of [0, 1]">
+                    <li class="appointment-item" [class.placeholder]="!pastAppointments[i]">
+                      <ng-container *ngIf="pastAppointments[i]; else emptyCardPast">
+                        <div class="left">
+                          <div class="date">{{ pastAppointments[i].date }} - {{ pastAppointments[i].time }}</div>
+                          <div class="badge badge-red">İptal Randevu</div>
+                          <div class="hospital">{{ pastAppointments[i].hospital }}</div>
+                          <div class="desc">{{ pastAppointments[i].description }}</div>
+                        </div>
+                        <div class="right">
+                          <div class="doctor"><i class="fas fa-user-md"></i> {{ pastAppointments[i].doctor?.name }} {{
+                            pastAppointments[i].doctor?.surname }}</div>
+                          <div class="clinic"><i class="fas fa-hospital"></i> {{ pastAppointments[i].clinic?.name }}
+                          </div>
+                          <button class="again-btn"
+                            (click)="goToAppointmentCreateByName(pastAppointments[i].clinic?.name)">
+                            Tekrar Al
+                          </button>
+
+                        </div>
+                      </ng-container>
+                      <ng-template #emptyCardPast>
+                        <div class="empty-slot">Boş</div>
+                      </ng-template>
+                    </li>
+                  </ng-container>
+                </ul>
+                <div class="show-all-container full-width">
+                  <button class="show-all-btn" (click)="goToGecmisRandevular()">
+                    <i class="fas fa-list-ul"></i>
+                    Tümünü Göster
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div> <!-- .dashboard-grid END -->
+      </div> <!-- .dashboard-top END -->
+
+      <!-- ALT KISIM: NAV KARTLAR -->
+      <div class="dashboard-bottom">
+        <div class="card-grid">
+          <div class="nav-card" (click)="goTo('prescriptions')">
+            <i class="fas fa-prescription-bottle-alt"></i>
+            <span>Reçetelerim</span>
+          </div>
+          <div class="nav-card" (click)="goTo('test-results')">
+            <i class="fas fa-vials"></i>
+            <span>Test Sonuçlarım</span>
+          </div>
+          <div class="nav-card" (click)="goTo('patient-reports')">
+            <i class="fas fa-file-medical-alt"></i>
+            <span>Raporlarım</span>
+          </div>
+          <div class="nav-card" (click)="goTo('patient-history')">
+            <i class="fas fa-notes-medical"></i>
+            <span>Sağlık Geçmişim</span>
+          </div>
+          <div class="nav-card" (click)="goTo('complaints')">
+            <i class="fas fa-comment-dots"></i>
+            <span>Şikayet Oluştur</span>
+          </div>
+          <div class="nav-card" (click)="goTo('appointment-list')">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Tüm Randevularım</span>
+          </div>
+        </div>
+      </div>
 </div>
+</div>
+
+    </section>
