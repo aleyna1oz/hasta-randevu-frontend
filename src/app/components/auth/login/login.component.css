@@ -92,3 +92,13 @@
 .muted{
   opacity: 0.7;
 }
+/* Linkler kesin tıklanabilir olsun */
+.auth__links{
+  position: relative;
+  z-index: 10;
+}
+
+.auth__links a{
+  pointer-events: auto;
+  cursor: pointer;
+}
